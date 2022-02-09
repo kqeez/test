@@ -1,5 +1,5 @@
 task:
-  name: "Radiant"
+  name: "lineage"
   timeout_in: 240m  
   container:
       image: ghcr.io/iamshubh69/docker:main
@@ -10,8 +10,8 @@ task:
       - cd ~
       - mkdir rom
       - cd rom
-      - repo init --depth=1 --no-repo-verify -u https://github.com/ArrowOS/android_manifest.git -b arrow-12.0 -g default,-mips,-darwin,-notdefault
-      - git clone https://github.com/DPSLEGEND/local_manifest.git --depth 1 -b arrow-temp .repo/local_manifests
+      - repo init --depth=1 --no-repo-verify -u https://github.com/LineageOS/android.git -b lineage-19.0 -g default,-mips,-darwin,-notdefault
+      - git clone https://github.com/kqeez/android_.repo_local_manifests --depth 1 -b rmx2020 .repo/local_manifests
       - repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
   Build_script: 
@@ -22,8 +22,8 @@ task:
       - export USE_CCACHE=1 >> ~/.bashrc
       - ccache -M 40G
       - . build/envsetup.sh
-      - lunch arrow_moon-userdebug
-      - m bacon
+      - lunch lineage_RMX2020-userdebug
+      - make bacon
 
   Upload_script:
       - echo "============================"
